@@ -1,17 +1,18 @@
-import type { Metadata } from "next";
-import "./globals.css";
+import type { Metadata } from 'next';
+import type { ReactNode } from 'react';
+import './globals.css';
 
 export const metadata: Metadata = {
-  title: "Klex Labs",
+  title: 'Klex Studios',
   description:
-    "Klex Labs is an independent app studio building Reson, Elixa and Noxa.",
+    'Independent app studio building social apps that bring people closer together.',
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: ReactNode;
+}) {
   return (
     <html lang="en">
       <body>{children}</body>
