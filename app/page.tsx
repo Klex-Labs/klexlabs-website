@@ -148,7 +148,7 @@ export default function HomePage() {
 
         <div className="home-hero-visual" aria-hidden="true">
           <Image
-            src="/images/studio-ecosystem-hero.png"
+            src="/images/studio-ecosystem.png"
             alt=""
             width={1672}
             height={941}
@@ -223,8 +223,8 @@ export default function HomePage() {
           across social discovery, dating, and party experiences.
         </p>
 
-        <a href="mailto:contact@klexstudios.com" className="hero-primary">
-          contact@klexstudios.com <span>↗</span>
+        <a href="mailto:info.klexstudios@gmail.com" className="hero-primary">
+          info.klexstudios@gmail.com <span>↗</span>
         </a>
       </section>
 
