@@ -148,7 +148,7 @@ export default function HomePage() {
 
         <div className="home-hero-visual" aria-hidden="true">
           <Image
-            src="/images/studio-ecosystem.png"
+            src="/images/studio-eco-system.png"
             alt=""
             width={1672}
             height={941}

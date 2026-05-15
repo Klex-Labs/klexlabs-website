@@ -96,11 +96,15 @@ img {
 .main-nav {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 34px;
 }
 
 .nav-link {
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 76px;
   color: rgba(255, 255, 255, 0.62);
   font-size: 0.9rem;
   font-weight: 750;
@@ -117,24 +121,29 @@ img {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -27px;
+  bottom: -1px;
   height: 3px;
   border-radius: 999px;
-  background: linear-gradient(90deg, var(--studio-blue), var(--studio-purple), var(--studio-green));
+  background: linear-gradient(
+    90deg,
+    var(--studio-blue),
+    var(--studio-purple),
+    var(--studio-green)
+  );
   box-shadow: 0 0 18px rgba(166, 108, 255, 0.8);
 }
 
-.noxa-active::after {
+.nav-link.noxa-active::after {
   background: linear-gradient(90deg, transparent, #3b6dff, transparent);
   box-shadow: 0 0 28px rgba(59, 109, 255, 0.9);
 }
 
-.reson-active::after {
+.nav-link.reson-active::after {
   background: linear-gradient(90deg, transparent, #a66cff, transparent);
   box-shadow: 0 0 28px rgba(166, 108, 255, 0.9);
 }
 
-.elixa-active::after {
+.nav-link.elixa-active::after {
   background: linear-gradient(90deg, transparent, #38f06f, transparent);
   box-shadow: 0 0 28px rgba(56, 240, 111, 0.75);
 }
@@ -1702,7 +1711,7 @@ img {
    RESPONSIVE
 ========================================================= */
 
-@media (max-width: 1180px) {
+@media (max-width: 900px) {
   .site-header {
     grid-template-columns: 1fr auto;
   }
