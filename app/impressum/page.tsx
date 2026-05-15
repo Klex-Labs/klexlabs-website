@@ -1,167 +1,131 @@
+import Link from "next/link";
+
 export default function ImpressumPage() {
   return (
-    <main className="legal-shell">
-      <section className="legal-card">
-        <a className="legal-back" href="/">
+    <main className="legal-page">
+      <section className="legal-shell">
+        <Link href="/" className="legal-back">
           ← Zurück zu Klex Studios
-        </a>
+        </Link>
 
-        <p className="legal-eyebrow">Legal</p>
+        <p className="legal-kicker">Legal Notice / Impressum</p>
         <h1>Impressum</h1>
 
-        <div className="legal-section">
-          <h2>Angaben gemäß § 5 DDG</h2>
+        <div className="legal-content">
+          <section>
+            <h2>Angaben gemäß § 5 DDG</h2>
+            <p>
+              Kimi Kempe
+              <br />
+              Schlickelder Straße 294
+              <br />
+              49479 Ibbenbüren
+              <br />
+              Deutschland
+            </p>
+          </section>
 
-          <p>
-            Kimi Kempe
-            <br />
-            Schlickelder Straße 294
-            <br />
-            49479 Ibbenbüren
-            <br />
-            Deutschland
-          </p>
-        </div>
+          <section>
+            <h2>Kontakt</h2>
+            <p>E-Mail: info.klexstudios@gmail.com</p>
+          </section>
 
-        <div className="legal-section">
-          <h2>Kontakt</h2>
+          <section>
+            <h2>Verantwortlich für den Inhalt</h2>
+            <p>
+              Kimi Kempe
+              <br />
+              Schlickelder Straße 294
+              <br />
+              49479 Ibbenbüren
+              <br />
+              Deutschland
+            </p>
+          </section>
 
-          <p>
-            E-Mail:{" "}
-            <a href="mailto:info.klexstudios@gmail.com">
-              info.klexstudios@gmail.com
-            </a>
-          </p>
-        </div>
+          <section>
+            <h2>Haftung für Inhalte</h2>
+            <p>
+              Als Diensteanbieter sind wir nach den allgemeinen Gesetzen für
+              eigene Inhalte auf diesen Seiten verantwortlich. Wir sind jedoch
+              nicht verpflichtet, übermittelte oder gespeicherte fremde
+              Informationen zu überwachen oder nach Umständen zu forschen, die
+              auf eine rechtswidrige Tätigkeit hinweisen.
+            </p>
+          </section>
 
-        <div className="legal-section">
-          <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+          <section>
+            <h2>Haftung für Links</h2>
+            <p>
+              Diese Website kann Links zu externen Websites enthalten. Auf deren
+              Inhalte haben wir keinen Einfluss. Deshalb übernehmen wir für diese
+              fremden Inhalte keine Gewähr. Für die Inhalte der verlinkten Seiten
+              ist stets der jeweilige Anbieter oder Betreiber verantwortlich.
+            </p>
+          </section>
 
-          <p>
-            Kimi Kempe
-            <br />
-            Schlickelder Straße 294
-            <br />
-            49479 Ibbenbüren
-            <br />
-            Deutschland
-          </p>
-        </div>
+          <section>
+            <h2>Urheberrecht</h2>
+            <p>
+              Die durch den Seitenbetreiber erstellten Inhalte und Werke auf
+              dieser Website unterliegen dem deutschen Urheberrecht.
+              Vervielfältigung, Bearbeitung, Verbreitung und jede Art der
+              Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der
+              schriftlichen Zustimmung.
+            </p>
+          </section>
 
-        <div className="legal-section">
-          <h2>Haftung für Inhalte</h2>
+          <section>
+            <h2>English Legal Notice</h2>
+            <p>
+              Provider of this website:
+              <br />
+              Kimi Kempe
+              <br />
+              Schlickelder Straße 294
+              <br />
+              49479 Ibbenbüren
+              <br />
+              Germany
+            </p>
+            <p>E-mail: info.klexstudios@gmail.com</p>
+            <p>
+              Responsible for the content of this website:
+              <br />
+              Kimi Kempe, address as stated above.
+            </p>
+          </section>
 
-          <p>
-            Als Diensteanbieter bin ich gemäß den allgemeinen Gesetzen für eigene
-            Inhalte auf diesen Seiten verantwortlich. Ich bin jedoch nicht
-            verpflichtet, übermittelte oder gespeicherte fremde Informationen zu
-            überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige
-            Tätigkeit hinweisen.
-          </p>
-        </div>
+          <section>
+            <h2>Liability for Content</h2>
+            <p>
+              As a service provider, we are responsible for our own content on
+              this website in accordance with general laws. However, we are not
+              obligated to monitor transmitted or stored third-party information
+              or to investigate circumstances that indicate unlawful activity.
+            </p>
+          </section>
 
-        <div className="legal-section">
-          <h2>Haftung für Links</h2>
+          <section>
+            <h2>Liability for Links</h2>
+            <p>
+              This website may contain links to external websites. We have no
+              influence over the content of those websites and therefore cannot
+              assume liability for external content. The respective provider or
+              operator of the linked pages is always responsible for their
+              content.
+            </p>
+          </section>
 
-          <p>
-            Diese Website kann Links zu externen Websites Dritter enthalten, auf
-            deren Inhalte ich keinen Einfluss habe. Deshalb kann ich für diese
-            fremden Inhalte keine Gewähr übernehmen. Für die Inhalte der
-            verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der
-            Seiten verantwortlich.
-          </p>
-        </div>
-
-        <div className="legal-section">
-          <h2>Urheberrecht</h2>
-
-          <p>
-            Die durch den Seitenbetreiber erstellten Inhalte und Werke auf dieser
-            Website unterliegen dem deutschen Urheberrecht. Beiträge Dritter
-            werden als solche gekennzeichnet. Die Vervielfältigung, Bearbeitung,
-            Verbreitung oder jede Art der Verwertung außerhalb der Grenzen des
-            Urheberrechts bedürfen der schriftlichen Zustimmung des jeweiligen
-            Autors oder Erstellers.
-          </p>
-        </div>
-
-        <div className="legal-divider" />
-
-        <p className="legal-eyebrow">English version</p>
-        <h1>Legal Notice</h1>
-
-        <div className="legal-section">
-          <h2>Information according to Section 5 DDG</h2>
-
-          <p>
-            Kimi Kempe
-            <br />
-            Schlickelder Straße 294
-            <br />
-            49479 Ibbenbüren
-            <br />
-            Germany
-          </p>
-        </div>
-
-        <div className="legal-section">
-          <h2>Contact</h2>
-
-          <p>
-            Email:{" "}
-            <a href="mailto:info.klexstudios@gmail.com">
-              info.klexstudios@gmail.com
-            </a>
-          </p>
-        </div>
-
-        <div className="legal-section">
-          <h2>Responsible for content according to Section 18 para. 2 MStV</h2>
-
-          <p>
-            Kimi Kempe
-            <br />
-            Schlickelder Straße 294
-            <br />
-            49479 Ibbenbüren
-            <br />
-            Germany
-          </p>
-        </div>
-
-        <div className="legal-section">
-          <h2>Liability for content</h2>
-
-          <p>
-            As a service provider, I am responsible for my own content on this
-            website in accordance with general laws. However, I am not obliged to
-            monitor transmitted or stored third-party information or to investigate
-            circumstances that indicate illegal activity.
-          </p>
-        </div>
-
-        <div className="legal-section">
-          <h2>Liability for links</h2>
-
-          <p>
-            This website may contain links to external third-party websites. I
-            have no influence over the content of those websites and therefore
-            cannot accept any liability for such external content. The respective
-            provider or operator of the linked websites is always responsible for
-            their content.
-          </p>
-        </div>
-
-        <div className="legal-section">
-          <h2>Copyright</h2>
-
-          <p>
-            The content and works created by the site operator on this website
-            are subject to German copyright law. Third-party contributions are
-            marked as such. Any reproduction, editing, distribution or use beyond
-            the limits of copyright law requires the written consent of the
-            respective author or creator.
-          </p>
+          <section>
+            <h2>Copyright</h2>
+            <p>
+              The content and works created by the website operator on this
+              website are subject to German copyright law. Reproduction, editing,
+              distribution, or any form of use beyond the limits of copyright law
+              requires written permission.
+            </p>
+          </section>
         </div>
       </section>
     </main>

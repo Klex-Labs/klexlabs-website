@@ -1,603 +1,240 @@
-"use client";
-
 import Image from "next/image";
-import { useMemo, useState } from "react";
+import Link from "next/link";
 import type { CSSProperties } from "react";
 
-type AppId = "noxa" | "reson" | "elixa";
-type ViewId = "studio" | AppId | "about" | "contact";
-type Lang = "en" | "de";
+const navItems = [
+  { label: "Studio", href: "/", active: true },
+  { label: "Noxa", href: "/noxa" },
+  { label: "Reson", href: "/reson" },
+  { label: "Elixa", href: "/elixa" },
+  { label: "About", href: "#about" },
+  { label: "Manifesto", href: "#manifesto" },
+  { label: "Contact", href: "#contact" },
+];
 
-type StudioApp = {
-  id: AppId;
-  name: string;
-  status: {
-    en: string;
-    de: string;
-  };
-  accent: string;
-  accentRgb: string;
-  logo: string;
-  label: {
-    en: string;
-    de: string;
-  };
-  short: {
-    en: string;
-    de: string;
-  };
-  expanded: {
-    en: string;
-    de: string;
-  };
-  purpose: {
-    en: string;
-    de: string;
-  };
-  principle: {
-    en: string;
-    de: string;
-  };
-  index: string;
-};
-
-const copy = {
-  en: {
-    nav: {
-      studio: "Studio",
-      about: "About",
-      contact: "Contact",
-    },
-    heroEyebrow: "Independent digital studio",
-    heroTitle: "Software for people who still want the real world.",
-    heroSubline:
-      "Klex Studios builds apps for dating, parties, events and social moments — designed to move people closer, not deeper into feeds.",
-    exploreApps: "Explore Apps",
-    manifesto: "Studio Manifesto",
-    positionEyebrow: "The position",
-    positionTitle:
-      "Most social apps optimize for attention. Klex Studios optimizes for the moment after the screen.",
-    positionText:
-      "The products are built around one principle: technology should create better conditions for people to meet, talk, laugh, date and experience something together.",
-    productSystem: "Product system",
-    productTitle: "Three apps. One direction.",
-    open: "Open",
-    principle: "Principle",
-    purpose: "Purpose",
-    aboutEyebrow: "About",
-    aboutTitle: "A small studio with a clear bias toward real life.",
-    aboutText1:
-      "Klex Studios is an independent digital studio building social products with a simple constraint: the best outcome should not be more time in the app.",
-    aboutText2:
-      "The goal is to design software that creates better openings for people — to meet, talk, date, celebrate, discover and remember.",
-    principles: [
-      {
-        title: "Question the default",
-        text: "Social software does not have to be built around endless feeds, ranking loops and shallow engagement.",
-      },
-      {
-        title: "Design for the human moment",
-        text: "Every product should eventually point away from passive scrolling and toward real interaction.",
-      },
-      {
-        title: "Stay visually honest",
-        text: "Clear symbols, clear status, clear intent. No fake maturity, no inflated product theater.",
-      },
-    ],
-    contactEyebrow: "Contact",
-    contactTitle: "Less scrolling. More living.",
-    contactText:
-      "Klex Studios is building a small ecosystem of apps for dating, parties, events and real-world connection.",
-    contactButton: "Contact",
-    footer: "Less scrolling. More living.",
-    privacy: "Privacy",
-  },
-  de: {
-    nav: {
-      studio: "Studio",
-      about: "Über uns",
-      contact: "Kontakt",
-    },
-    heroEyebrow: "Unabhängiges Digitalstudio",
-    heroTitle: "Software für Menschen, die noch echte Momente wollen.",
-    heroSubline:
-      "Klex Studios entwickelt Apps für Dating, Partys, Events und soziale Begegnungen — gebaut, um Menschen näher zusammenzubringen, nicht tiefer in Feeds zu ziehen.",
-    exploreApps: "Apps ansehen",
-    manifesto: "Studio Manifest",
-    positionEyebrow: "Die Haltung",
-    positionTitle:
-      "Die meisten Social Apps optimieren Aufmerksamkeit. Klex Studios optimiert den Moment nach dem Bildschirm.",
-    positionText:
-      "Alle Produkte folgen einem Prinzip: Technologie soll bessere Bedingungen schaffen, damit Menschen sich treffen, reden, lachen, daten und echte Dinge gemeinsam erleben.",
-    productSystem: "Produktsystem",
-    productTitle: "Drei Apps. Eine Richtung.",
-    open: "Öffne",
-    principle: "Prinzip",
-    purpose: "Zweck",
-    aboutEyebrow: "Über uns",
-    aboutTitle: "Ein kleines Studio mit klarer Richtung: echtes Leben.",
-    aboutText1:
-      "Klex Studios ist ein unabhängiges Digitalstudio für soziale Produkte mit einer einfachen Grenze: Das beste Ergebnis ist nicht mehr Zeit in der App.",
-    aboutText2:
-      "Ziel ist Software, die bessere Einstiege schafft — um Menschen zu treffen, zu reden, zu daten, zu feiern, zu entdecken und sich an Momente zu erinnern.",
-    principles: [
-      {
-        title: "Den Standard hinterfragen",
-        text: "Soziale Software muss nicht aus endlosen Feeds, Ranking-Loops und flacher Aufmerksamkeit bestehen.",
-      },
-      {
-        title: "Für echte Momente designen",
-        text: "Jedes Produkt soll irgendwann weg vom passiven Scrollen und hin zu echter Interaktion führen.",
-      },
-      {
-        title: "Visuell ehrlich bleiben",
-        text: "Klare Symbole, klarer Status, klare Absicht. Kein künstliches Reifewirken, kein aufgeblasenes Produkt-Theater.",
-      },
-    ],
-    contactEyebrow: "Kontakt",
-    contactTitle: "Weniger Scrollen. Mehr Leben.",
-    contactText:
-      "Klex Studios baut ein kleines App-Ökosystem für Dating, Partys, Events und echte soziale Verbindung.",
-    contactButton: "Kontakt",
-    footer: "Weniger Scrollen. Mehr Leben.",
-    privacy: "Datenschutz",
-  },
-};
-
-const apps: StudioApp[] = [
+const apps = [
   {
-    id: "noxa",
     name: "Noxa",
-    status: {
-      en: "Concept",
-      de: "Konzept",
-    },
-    accent: "#3B82F6",
-    accentRgb: "59, 130, 246",
+    href: "/noxa",
+    status: "In concepting phase",
+    color: "#3B6DFF",
     logo: "/logos/noxa-logo.png",
-    label: {
-      en: "Social Discovery",
-      de: "Social Discovery",
-    },
-    short: {
-      en: "Find events, groups and real-world moments around you.",
-      de: "Finde Events, Gruppen und echte Momente in deiner Nähe.",
-    },
-    expanded: {
-      en: "Noxa is built for social discovery outside the feed: communities, events, places and shared experiences that actually happen in the real world.",
-      de: "Noxa ist für Social Discovery außerhalb des Feeds gebaut: Communities, Events, Orte und gemeinsame Erlebnisse, die wirklich stattfinden.",
-    },
-    purpose: {
-      en: "Help people discover what is happening nearby and step into social moments instead of endlessly scrolling past them.",
-      de: "Menschen sollen entdecken, was in ihrer Nähe passiert, und echte soziale Momente betreten, statt endlos daran vorbeizuscrollen.",
-    },
-    principle: {
-      en: "Less feed. More places.",
-      de: "Weniger Feed. Mehr Orte.",
-    },
-    index: "01",
+    eyebrow: "Social discovery",
+    title: "Discover what is happening around you.",
+    text: "A social-discovery concept for nearby events, groups, parties, and spontaneous real-world moments.",
   },
   {
-    id: "reson",
     name: "Reson",
-    status: {
-      en: "Development",
-      de: "In Entwicklung",
-    },
-    accent: "#A78BFA",
-    accentRgb: "167, 139, 250",
+    href: "/reson",
+    status: "In development",
+    color: "#A66CFF",
     logo: "/logos/reson-logo.png",
-    label: {
-      en: "Dating",
-      de: "Dating",
-    },
-    short: {
-      en: "A calmer dating app built around intention and compatibility.",
-      de: "Eine ruhigere Dating-App für Intention und Kompatibilität.",
-    },
-    expanded: {
-      en: "Reson questions dopamine-driven swipe culture and focuses on intention, compatibility, values and honest connection.",
-      de: "Reson hinterfragt dopamin-getriebene Swipe-Kultur und setzt auf Intention, Kompatibilität, Werte und ehrliche Verbindung.",
-    },
-    purpose: {
-      en: "Create better conditions for people to choose differently, talk more honestly and meet with clearer intent.",
-      de: "Bessere Bedingungen schaffen, damit Menschen anders wählen, ehrlicher reden und sich mit klarerer Absicht treffen.",
-    },
-    principle: {
-      en: "Less swiping. More intention.",
-      de: "Weniger Swipen. Mehr Absicht.",
-    },
-    index: "02",
+    eyebrow: "Dating with intent",
+    title: "Choose people by more than pictures.",
+    text: "A dating app in development, focused on compatibility, shared values, and more intentional conversations.",
   },
   {
-    id: "elixa",
     name: "Elixa",
-    status: {
-      en: "Development",
-      de: "In Entwicklung",
-    },
-    accent: "#38F06F",
-    accentRgb: "56, 240, 111",
+    href: "/elixa",
+    status: "In development",
+    color: "#38F06F",
     logo: "/logos/elixa-logo.png",
-    label: {
-      en: "Party Game",
-      de: "Party Game",
-    },
-    short: {
-      en: "A party game for conversations, chaos and memorable nights.",
-      de: "Ein Partyspiel für Gespräche, Chaos und erinnerbare Nächte.",
-    },
-    expanded: {
-      en: "Elixa turns phones into a trigger for group moments: questions, laughter, chaos and stories people remember later.",
-      de: "Elixa macht Smartphones zum Auslöser für Gruppenmomente: Fragen, Lachen, Chaos und Geschichten, an die man sich später erinnert.",
-    },
-    purpose: {
-      en: "Make parties more social by giving groups a simple way to start conversations, break silence and create shared memories.",
-      de: "Partys sozialer machen, indem Gruppen leichter Gespräche starten, Stille brechen und gemeinsame Erinnerungen schaffen.",
-    },
-    principle: {
-      en: "Less silence. More stories.",
-      de: "Weniger Stille. Mehr Stories.",
-    },
-    index: "03",
+    eyebrow: "Party games",
+    title: "Turn nights into shared moments.",
+    text: "A party game app in development with fast setup, clean design, and games built for real groups.",
   },
 ];
 
-export default function Home() {
-  const [activeView, setActiveView] = useState<ViewId>("studio");
-  const [lang, setLang] = useState<Lang>("en");
+const principles = [
+  {
+    title: "Real life first",
+    text: "Our products are designed to support real moments, not replace them.",
+  },
+  {
+    title: "Less passive scrolling",
+    text: "We build against empty engagement loops and design for action, presence, and intent.",
+  },
+  {
+    title: "Honest by design",
+    text: "Clear status, no fake traction, no fake screenshots, no pretending the product is further than it is.",
+  },
+  {
+    title: "Human connection",
+    text: "Dating, parties, events, and communities all share one goal: helping people connect better.",
+  },
+];
 
-  const activeApp = useMemo(
-    () => apps.find((app) => app.id === activeView),
-    [activeView],
-  );
-
-  const accent = activeApp?.accent ?? "#ffffff";
-  const accentRgb = activeApp?.accentRgb ?? "255, 255, 255";
-  const t = copy[lang];
-
-  const navItems: { id: ViewId; label: string; accent?: string }[] = [
-    { id: "studio", label: t.nav.studio, accent: "#ffffff" },
-    { id: "noxa", label: "Noxa", accent: "#3B82F6" },
-    { id: "reson", label: "Reson", accent: "#A78BFA" },
-    { id: "elixa", label: "Elixa", accent: "#38F06F" },
-    { id: "about", label: t.nav.about, accent: "#ffffff" },
-    { id: "contact", label: t.nav.contact, accent: "#ffffff" },
-  ];
-
+export default function HomePage() {
   return (
     <main
-      className="site-shell"
+      className="site-shell home-shell"
       style={
         {
-          "--accent": accent,
-          "--accent-rgb": accentRgb,
+          "--studio-green": "#38F06F",
+          "--studio-blue": "#3B6DFF",
+          "--studio-purple": "#A66CFF",
         } as CSSProperties
       }
     >
       <header className="site-header">
-        <button
-          className="brand"
-          onClick={() => setActiveView("studio")}
-          aria-label="Open Klex Studios overview"
-        >
+        <Link className="brand" href="/" aria-label="Klex Studios home">
           <Image
             src="/logos/klex-logo.png"
-            alt="Klex Studios Logo"
+            alt="Klex Studios"
             width={42}
             height={42}
             priority
             className="brand-logo"
           />
           <span>Klex Studios</span>
-        </button>
+        </Link>
 
-        <div className="header-controls">
-          <nav className="nav-tabs" aria-label="Main navigation">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                className={
-                  activeView === item.id ? "nav-tab active" : "nav-tab"
-                }
-                style={
-                  {
-                    "--nav-accent": item.accent ?? "#ffffff",
-                  } as CSSProperties
-                }
-                onClick={() => setActiveView(item.id)}
-                aria-current={activeView === item.id ? "page" : undefined}
-              >
-                <span>{item.label}</span>
-              </button>
-            ))}
-          </nav>
+        <nav className="main-nav" aria-label="Main navigation">
+          {navItems.map((item) => (
+            <Link
+              key={item.label}
+              href={item.href}
+              className={item.active ? "nav-link active" : "nav-link"}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
 
-          <div className="language-switch" aria-label="Language selection">
-            <button
-              className={lang === "en" ? "language-button active" : "language-button"}
-              onClick={() => setLang("en")}
-              aria-pressed={lang === "en"}
-            >
-              EN
-            </button>
-            <button
-              className={lang === "de" ? "language-button active" : "language-button"}
-              onClick={() => setLang("de")}
-              aria-pressed={lang === "de"}
-            >
-              DE
-            </button>
-          </div>
+        <div className="language-switch" aria-label="Language">
+          <button className="language-button active">EN</button>
+          <button className="language-button">DE</button>
         </div>
       </header>
 
-      <section className="content-frame">
-        {activeView === "studio" && (
-          <StudioOverview onSelectView={setActiveView} lang={lang} />
-        )}
+      <section className="home-hero">
+        <div className="home-hero-copy">
+          <p className="hero-kicker">Independent digital product studio</p>
 
-        {activeApp && <AppDetail app={activeApp} lang={lang} />}
+          <h1>
+            We build software
+            <br />
+            for real life.
+          </h1>
 
-        {activeView === "about" && <AboutSection lang={lang} />}
-
-        {activeView === "contact" && <ContactSection lang={lang} />}
-      </section>
-
-      <footer className="footer">
-        <div>
-          <span>© 2026 Klex Studios.</span>
-          <strong> {t.footer}</strong>
-        </div>
-
-        <nav className="footer-links" aria-label="Legal links">
-          <a href="/impressum">Impressum</a>
-          <a href="/privacy">{t.privacy}</a>
-        </nav>
-      </footer>
-    </main>
-  );
-}
-
-function StudioOverview({
-  onSelectView,
-  lang,
-}: {
-  onSelectView: (view: ViewId) => void;
-  lang: Lang;
-}) {
-  const t = copy[lang];
-
-  return (
-    <div className="view enter">
-      <section className="hero-grid">
-        <div className="hero-copy">
-          <p className="eyebrow">{t.heroEyebrow}</p>
-
-          <h1>{t.heroTitle}</h1>
-
-          <p className="hero-subline">{t.heroSubline}</p>
+          <p className="hero-lead">
+            Klex Studios creates thoughtful apps for dating, parties, events and
+            social moments — designed to bring people closer, not deeper into
+            feeds.
+          </p>
 
           <div className="hero-actions">
-            <button
-              className="primary-button"
-              onClick={() => onSelectView("noxa")}
-            >
-              {t.exploreApps}
-            </button>
+  <a href="#apps" className="hero-primary">
+    Explore the ecosystem <span>↗</span>
+  </a>
+  <a href="#manifesto" className="hero-secondary">
+    Read the manifesto <span>□</span>
+  </a>
+</div>
 
-            <button
-              className="secondary-button"
-              onClick={() => onSelectView("about")}
-            >
-              {t.manifesto}
-            </button>
-          </div>
+          <div className="home-purpose-row">
+  <span>Built with intent</span>
+  <div>
+    <b>◎</b> Real-world connection
+  </div>
+  <div>
+    <b>▣</b> Less scrolling
+  </div>
+  <div>
+    <b>◇</b> More living
+  </div>
+</div>
         </div>
 
-        <div className="hero-visual" aria-hidden="true">
-          <div className="logo-stage">
-            <div className="logo-stage-grid" />
-            <Image
-              src="/logos/klex-logo.png"
-              alt=""
-              width={280}
-              height={280}
-              priority
-              className="hero-logo"
-            />
-            <div className="corner-mark corner-blue" />
-            <div className="corner-mark corner-purple" />
-            <div className="corner-mark corner-green" />
-          </div>
+        <div className="home-hero-visual" aria-hidden="true">
+          <Image
+            src="/images/studio-ecosystem-hero.png"
+            alt=""
+            width={1672}
+            height={941}
+            priority
+            className="home-hero-image"
+          />
         </div>
       </section>
 
-      <section className="statement-panel">
-        <div>
-          <p className="eyebrow">{t.positionEyebrow}</p>
-          <h2>{t.positionTitle}</h2>
-        </div>
+      <section className="home-panel" id="apps">
+        <div className="home-apps-row">
+          <div className="home-panel-intro">
+            <p className="section-kicker">Our apps</p>
+            <h2>
+              Different products.
+              <br />
+              One mission.
+            </h2>
+            <p>
+              Each app targets a different social moment - meeting, dating, playing, 
+              going out - but they all point back to real life.
+            </p>
+          </div>
 
-        <p>{t.positionText}</p>
-      </section>
-
-      <section className="ecosystem">
-        <div className="section-heading">
-          <p className="eyebrow">{t.productSystem}</p>
-          <h2>{t.productTitle}</h2>
-        </div>
-
-        <div className="app-showcase">
           {apps.map((app) => (
-            <button
-              key={app.id}
-              className="app-card"
-              style={
-                {
-                  "--card-accent": app.accent,
-                  "--card-accent-rgb": app.accentRgb,
-                } as CSSProperties
-              }
-              onClick={() => onSelectView(app.id)}
+            <Link
+              key={app.name}
+              href={app.href}
+              className="home-product-card"
+              style={{ "--app-accent": app.color } as CSSProperties}
             >
-              <span className="app-index">{app.index}</span>
-
-              <div className="app-card-header">
-                <Image
-                  src={app.logo}
-                  alt={`${app.name} Logo`}
-                  width={58}
-                  height={58}
-                  className="app-logo"
-                />
-
-                <span>{app.status[lang]}</span>
-              </div>
-
-              <div className="app-card-body">
-                <p className="app-label">{app.label[lang]}</p>
-                <h3>{app.name}</h3>
-                <p>{app.short[lang]}</p>
-              </div>
-
-              <span className="card-link">
-                {t.open} {app.name}
+              <span className="home-product-logo">
+                <Image src={app.logo} alt="" width={54} height={54} />
               </span>
-            </button>
+
+              <div>
+                <h3>{app.name}</h3>
+                <span>{app.status}</span>
+                <p>{app.title}</p>
+              </div>
+
+              <b>↗</b>
+            </Link>
+          ))}
+        </div>
+
+        <div className="home-principles-row" id="manifesto">
+          <div className="home-panel-intro">
+            <p className="section-kicker">Our manifesto</p>
+            <h2>
+              Principles over
+              <br />
+              everything.
+            </h2>
+          </div>
+
+          {principles.map((principle) => (
+            <article key={principle.title}>
+              <span>✦</span>
+              <h3>{principle.title}</h3>
+              <p>{principle.text}</p>
+            </article>
           ))}
         </div>
       </section>
-    </div>
-  );
-}
 
-function AppDetail({ app, lang }: { app: StudioApp; lang: Lang }) {
-  const t = copy[lang];
+      <section className="contact-section" id="contact">
+        <p className="section-kicker">Contact</p>
+        <h2>Building quietly. Shipping intentionally.</h2>
+        <p>
+          Klex Studios is currently developing its first product ecosystem
+          across social discovery, dating, and party experiences.
+        </p>
 
-  return (
-    <div className="view enter">
-      <section className="app-detail">
-        <div className="app-detail-copy">
-          <p className="eyebrow">{app.label[lang]}</p>
-
-          <div className="title-row">
-            <div className="app-title-lockup">
-              <Image
-                src={app.logo}
-                alt={`${app.name} Logo`}
-                width={86}
-                height={86}
-                priority
-                className="detail-logo"
-              />
-              <h1>{app.name}</h1>
-            </div>
-
-            <span className="status-pill">{app.status[lang]}</span>
-          </div>
-
-          <p className="hero-subline">{app.short[lang]}</p>
-
-          <div className="detail-grid">
-            <div className="detail-block">
-              <span>{t.principle}</span>
-              <h2>{app.principle[lang]}</h2>
-              <p>{app.expanded[lang]}</p>
-            </div>
-
-            <div className="detail-block muted-block">
-              <span>{t.purpose}</span>
-              <p>{app.purpose[lang]}</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="product-stage" aria-hidden="true">
-          <div className="product-card">
-            <div className="product-card-top">
-              <span>{app.index}</span>
-              <span>{app.status[lang]}</span>
-            </div>
-
-            <Image
-              src={app.logo}
-              alt=""
-              width={130}
-              height={130}
-              className="product-logo"
-            />
-
-            <div className="product-preview">
-              <span className="preview-kicker">{app.name}</span>
-              <h2>{app.principle[lang]}</h2>
-
-              <div className="preview-lines">
-                <span />
-                <span />
-                <span />
-              </div>
-            </div>
-
-            <div className="product-corner" />
-          </div>
-        </div>
-      </section>
-    </div>
-  );
-}
-
-function AboutSection({ lang }: { lang: Lang }) {
-  const t = copy[lang];
-
-  return (
-    <div className="view enter">
-      <section className="about-grid">
-        <div>
-          <p className="eyebrow">{t.aboutEyebrow}</p>
-          <h1>{t.aboutTitle}</h1>
-        </div>
-
-        <div className="about-copy">
-          <p>{t.aboutText1}</p>
-          <p>{t.aboutText2}</p>
-        </div>
+        <a href="mailto:contact@klexstudios.com" className="hero-primary">
+          contact@klexstudios.com <span>↗</span>
+        </a>
       </section>
 
-      <section className="principles">
-        {t.principles.map((principle, index) => (
-          <div key={principle.title}>
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <h3>{principle.title}</h3>
-            <p>{principle.text}</p>
-          </div>
-        ))}
-      </section>
-    </div>
-  );
-}
-
-function ContactSection({ lang }: { lang: Lang }) {
-  const t = copy[lang];
-
-  return (
-    <div className="view enter">
-      <section className="contact-panel">
-        <p className="eyebrow">{t.contactEyebrow}</p>
-        <h1>{t.contactTitle}</h1>
-
-        <p>{t.contactText}</p>
-
-        <div className="contact-actions">
-          <a className="primary-button" href="mailto:info.klexstudios@gmail.com">
-            {t.contactButton}
-          </a>
-
-          <a className="secondary-button" href="https://klexstudios.com">
-            klexstudios.com
-          </a>
+      <footer className="site-footer">
+        <span>© 2026 Klex Studios. All rights reserved.</span>
+        <div className="footer-links">
+          <Link href="/impressum">Impressum</Link>
+          <Link href="/privacy">Privacy</Link>
         </div>
-      </section>
-    </div>
+      </footer>
+    </main>
   );
 }
