@@ -399,12 +399,7 @@ img {
 .principles-section,
 .manifesto-section,
 .contact-section,
-.site-footer {
-  width: min(100%, 1500px);
-  margin: 0 auto;
-  padding-left: 32px;
-  padding-right: 32px;
-}
+
 
 .studio-intro {
   padding-top: 90px;
@@ -2614,5 +2609,59 @@ img {
   .legal-shell {
     padding: 26px 20px;
     border-radius: 24px;
+  }
+}
+
+/* =========================================================
+   GLOBAL FOOTER
+========================================================= */
+
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  width: min(100% - 64px, 1500px);
+  margin: 0 auto;
+  padding: 28px 0 36px;
+  color: rgba(255, 255, 255, 0.45);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.58);
+  font-weight: 750;
+  transition: color 0.18s ease;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+}
+
+.legal-footer {
+  width: min(100%, 980px);
+  margin-top: 34px;
+}
+
+@media (max-width: 760px) {
+  .site-footer {
+    width: calc(100% - 36px);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px 0 32px;
+  }
+
+  .footer-links {
+    gap: 18px;
+  }
+
+  .legal-footer {
+    width: min(100%, 980px);
   }
 }

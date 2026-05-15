@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SiteFooter from "@/components/SiteFooter";
 
 export default function PrivacyPage() {
   return (
@@ -477,6 +478,8 @@ export default function PrivacyPage() {
           </section>
         </div>
       </section>
+      <SiteFooter variant="legal" />
+    
     </main>
   );
 }

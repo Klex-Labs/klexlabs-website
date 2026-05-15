@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties } from "react";
+import SiteFooter from "@/components/SiteFooter";
 
 const accent = {
   hex: "#A66CFF",
@@ -214,6 +215,7 @@ export default function ResonPage() {
           </Link>
         </div>
       </section>
+      <SiteFooter />
     </main>
   );
 }

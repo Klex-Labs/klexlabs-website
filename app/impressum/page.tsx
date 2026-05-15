@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SiteFooter from "@/components/SiteFooter";
 
 export default function ImpressumPage() {
   return (
@@ -128,6 +129,7 @@ export default function ImpressumPage() {
           </section>
         </div>
       </section>
+      <SiteFooter variant="legal" />
     </main>
   );
 }

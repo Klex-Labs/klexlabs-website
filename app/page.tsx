@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties } from "react";
+import SiteFooter from "@/components/SiteFooter";
 
 const navItems = [
   { label: "Studio", href: "/", active: true },
@@ -124,26 +125,26 @@ export default function HomePage() {
           </p>
 
           <div className="hero-actions">
-  <a href="#apps" className="hero-primary">
-    Explore the ecosystem <span>↗</span>
-  </a>
-  <a href="#manifesto" className="hero-secondary">
-    Read the manifesto <span>□</span>
-  </a>
-</div>
+            <a href="#apps" className="hero-primary">
+              Explore the ecosystem <span>↗</span>
+            </a>
+            <a href="#manifesto" className="hero-secondary">
+              Read the manifesto <span>□</span>
+            </a>
+          </div>
 
           <div className="home-purpose-row">
-  <span>Built with intent</span>
-  <div>
-    <b>◎</b> Real-world connection
-  </div>
-  <div>
-    <b>▣</b> Less scrolling
-  </div>
-  <div>
-    <b>◇</b> More living
-  </div>
-</div>
+            <span>Built with intent</span>
+            <div>
+              <b>◎</b> Real-world connection
+            </div>
+            <div>
+              <b>▣</b> Less scrolling
+            </div>
+            <div>
+              <b>◇</b> More living
+            </div>
+          </div>
         </div>
 
         <div className="home-hero-visual" aria-hidden="true">
@@ -168,7 +169,7 @@ export default function HomePage() {
               One mission.
             </h2>
             <p>
-              Each app targets a different social moment - meeting, dating, playing, 
+              Each app targets a different social moment - meeting, dating, playing,
               going out - but they all point back to real life.
             </p>
           </div>
@@ -228,13 +229,7 @@ export default function HomePage() {
         </a>
       </section>
 
-      <footer className="site-footer">
-        <span>© 2026 Klex Studios. All rights reserved.</span>
-        <div className="footer-links">
-          <Link href="/impressum">Impressum</Link>
-          <Link href="/privacy">Privacy</Link>
-        </div>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }
