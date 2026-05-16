@@ -210,6 +210,9 @@ img { display: block; max-width: 100%; }
 }
 
 .language-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 42px;
   height: 32px;
   border: 0;

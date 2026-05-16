@@ -2,12 +2,31 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Klex Studios",
+  metadataBase: new URL("https://klexstudios.com"),
+  title: {
+    default: "Klex Studios",
+    template: "%s | Klex Studios",
+  },
   description:
     "Klex Studios builds digital products for real social moments, dating, events, parties, and connection.",
   icons: {
     icon: "/favicon.ico",
     apple: "/apple-icon.png",
+  },
+  openGraph: {
+    title: "Klex Studios",
+    description: "Digital products for real social moments.",
+    url: "https://klexstudios.com",
+    siteName: "Klex Studios",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Klex Studios",
+      },
+    ],
+    type: "website",
   },
 };
 
@@ -17,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="de">
       <body>{children}</body>
     </html>
   );
