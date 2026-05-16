@@ -2,9 +2,13 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Klex Studios — Apps for real-world connection",
+  title: "Klex Studios",
   description:
-    "Klex Studios is an independent digital studio building apps for dating, parties, events and real-world connection.",
+    "Klex Studios builds digital products for real social moments, dating, events, parties, and connection.",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-icon.png",
+  },
 };
 
 export default function RootLayout({

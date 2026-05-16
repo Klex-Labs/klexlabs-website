@@ -99,27 +99,14 @@ export default function NoxaPage() {
 
       <section className="noxa-hero">
         <div className="noxa-hero-copy">
-          <div className="noxa-title-mark">
-            <span className="noxa-logo-tile">
-              <Image
-                src="/logos/noxa-logo.png"
-                alt=""
-                width={32}
-                height={32}
-                className="noxa-logo"
-              />
-            </span>
-            <span>noxa</span>
-          </div>
-
+          <p className="noxa-kicker">Noxa by Klex Studios</p>
           <h1>
             Meet people.
             <br />
             Find events.
             <br />
-            <span>Discover real life.</span>
+            Discover <span>real life.</span>
           </h1>
-
           <p className="noxa-lead">
             Noxa is your social-discovery app for events, parties, groups, and
             spontaneous experiences nearby. Leave endless feeds behind and step
