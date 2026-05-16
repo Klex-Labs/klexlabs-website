@@ -55,11 +55,11 @@ export default async function HomePage({ params }: Props) {
         <div className="home-hero-copy">
           <p className="hero-kicker">{t.home.kicker}</p>
 
-          <h1>
-            {t.home.titleA}
-            <br />
-            {t.home.titleB}
-          </h1>
+          <h1 className="hero-title">
+  {t.home.titleA}
+  <br />
+  <span className="klex-gradient-text">{t.home.titleB}</span>
+</h1>
 
           <p className="hero-lead">{t.home.lead}</p>
 

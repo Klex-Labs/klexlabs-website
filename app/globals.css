@@ -1427,3 +1427,19 @@ img { display: block; max-width: 100%; }
   .footer-links { gap: 18px; }
   .legal-footer { width: min(100%, 980px); }
 }
+
+
+/* Farbverlauf */
+
+.klex-gradient-text {
+  display: inline-block;
+  background: linear-gradient(
+    135deg,
+    #a66cff 0%,
+    #3b6dff 52%,
+    #38f06f 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

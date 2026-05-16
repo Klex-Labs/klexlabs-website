@@ -49,8 +49,8 @@ export const dictionaries = {
     },
     home: {
       kicker: "Independent social app studio",
-      titleA: "Apps against",
-      titleB: "digital loneliness.",
+      titleA: "Built for",
+      titleB: "real-life.",
       lead:
         "Klex Studios builds social apps for a generation that grew up online — but still lacks real connection. No feed traps. No artificial frustration. No products built against their users.",
       primary: "Explore the apps",
@@ -298,8 +298,8 @@ export const dictionaries = {
     },
     home: {
       kicker: "Unabhängiges Social-App-Studio",
-      titleA: "Apps gegen",
-      titleB: "digitale Einsamkeit.",
+      titleA: "Gebaut für",
+      titleB: "echtes Leben.",
       lead:
         "Klex Studios baut Social Apps für eine Generation, die online aufgewachsen ist — aber echte Verbindung vermisst. Keine Feed-Fallen. Keine künstliche Frustration. Keine Produkte, die gegen ihre Nutzer arbeiten.",
       primary: "Apps ansehen",

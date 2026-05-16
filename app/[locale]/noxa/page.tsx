@@ -31,8 +31,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function NoxaPage({ params }: Props) {
   const locale = await getLocale(params);
   const t = getDictionary(locale).noxa;
-  const titleAccentA = "titleAccentA" in t ? t.titleAccentA : t.titleC;
-  const titleAccentB = "titleAccentB" in t ? t.titleAccentB : t.titleAccent;
 
   return (
     <main
@@ -54,8 +52,8 @@ export default async function NoxaPage({ params }: Props) {
             <br />
             {t.titleB}
             <br />   <span>{t.titleAccentA}</span>
-  <br />
-  <span>{t.titleAccentB}</span>
+            <br />
+            <span>{t.titleAccentB}</span>
           </h1>
           <p className="noxa-lead">{t.lead}</p>
 
