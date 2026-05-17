@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getDictionary, Locale, PageKey, routeFor } from "@/lib/i18n";
+import { LanguageSwitcher } from "@/components/language-switcher";
 
 type SiteHeaderProps = {
   locale: Locale;
@@ -57,22 +58,7 @@ export default function SiteHeader({ locale, active }: SiteHeaderProps) {
         })}
       </nav>
 
-      <div className="language-switch" aria-label="Language">
-        <Link
-          className={locale === "en" ? "language-button active" : "language-button"}
-          href={routeFor("en", active)}
-          hrefLang="en"
-        >
-          EN
-        </Link>
-        <Link
-          className={locale === "de" ? "language-button active" : "language-button"}
-          href={routeFor("de", active)}
-          hrefLang="de"
-        >
-          DE
-        </Link>
-      </div>
+      <LanguageSwitcher />
     </header>
   );
 }
